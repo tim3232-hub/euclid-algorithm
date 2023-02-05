@@ -4,6 +4,8 @@ function gcd(a, b) {
     b = Number(integer_b.value);
     a1 = Number(integer_a.value);
     b1 = Number(integer_b.value);
+    a = Math.abs(a);
+    b = Math.abs(b);
     let r;
     if (a % 1 !==0 || b % 1 !==0 || isNaN(a)) {
         alert('a oder b ist keine ganze Zahl')
