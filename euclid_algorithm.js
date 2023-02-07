@@ -1,44 +1,47 @@
-const Submit = document.querySelector('#Submit')
-function gcd(a, b) {
-    a = Number(integer_a.value);
-    b = Number(integer_b.value);
-    a1 = Number(integer_a.value);
-    b1 = Number(integer_b.value);
-    a = Math.abs(a);
-    b = Math.abs(b);
-    let r;
-    if (a % 1 !==0 || b % 1 !==0 || isNaN(a)) {
-        alert('a oder b ist keine ganze Zahl')
+const submitButton = document.querySelector('#submitButton')
+
+function findGCD(IntegerA, IntegerB) {
+    IntegerA = Math.abs(Number(integer_a.value));
+    IntegerB = Math.abs(Number(integer_b.value));
+    IntegerA1 = Number(integer_a.value);
+    IntegerB1 = Number(integer_b.value);
+
+    if (IntegerA % 1 !== 0) {
+        alert(IntegerA + ' ist keine ganze Zahl');
         return false;
     }
-    else if (a === b) {
-        document.getElementById("a1").innerHTML = a1;
-        document.getElementById("b1").innerHTML = b1;
-        document.getElementById("gcd").innerHTML = a;
-        return a;
+    if (IntegerB % 1 !== 0) {
+        alert(IntegerB + ' ist keine ganze Zahl');
+        return false;
     }
-    else if (a === 0) {
-        document.getElementById("a1").innerHTML = a1;
-        document.getElementById("b1").innerHTML = b1;
-        document.getElementById("gcd").innerHTML = b;
-          return b;  
+
+    let remainder;
+    if (IntegerA === IntegerB) {
+        return GCD = IntegerA;
     }
-    else if (b === 0) {
-        document.getElementById("a1").innerHTML = a1;
-        document.getElementById("b1").innerHTML = b1;
-        document.getElementById("gcd").innerHTML = a;
-        return a;
+    else if (IntegerA === 0) {
+        return GCD = IntegerB;
+    }
+    else if (IntegerB === 0) {
+        return GCD = IntegerA;
     }
     else {
-        while ((a % b) >0 ) {
-            r = a % b;
-            a = b;
-            b = r;
+        while ((IntegerA % IntegerB) > 0) {
+            remainder = IntegerA % IntegerB;
+            IntegerA = IntegerB;
+            IntegerB = remainder;
         }
-        document.getElementById("a1").innerHTML = a1;
-        document.getElementById("b1").innerHTML = b1;
-        document.getElementById("gcd").innerHTML = b;
-        return b;
-    }  
+        return GCD = IntegerB;
+    }
 }
-Submit.addEventListener('click', gcd)
+
+function updateHTML() {
+    document.getElementById("IntegerA1").innerHTML = IntegerA1;
+    document.getElementById("IntegerB1").innerHTML = IntegerB1;
+    document.getElementById("gcd").innerHTML = GCD;
+}
+
+submitButton.addEventListener('click', () => {
+    findGCD();
+    updateHTML();
+});
